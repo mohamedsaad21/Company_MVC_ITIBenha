@@ -1,0 +1,43 @@
+﻿@model EmployeeWithDeptViewModel
+
+
+<h3 class="text-center mt-4 main-title position-relative">Edit Employee</h3>
+
+<form class="mt-5" asp-action="SaveEdit" asp-controller="Employee">
+    <input asp-for="Id" hidden/>
+    <div class="form-group">
+        <label asp-for="FirstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" asp-for=FirstName />
+        <span class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FirstName" class="form-label">Last Name</label>
+        <input type="text" class="form-control" asp-for=LastName />
+        <span class="text-danger"></span>
+    </div>
+    <label asp-for="FirstName" class="form-label">Gender</label>
+    <input type="text" class="form-control" asp-for=Gender />
+    <span class="text-danger"></span>
+    <label asp-for="FirstName" class="form-label">Address</label>
+    <input type="text" class="form-control" asp-for=Address />
+    <span class="text-danger"></span>
+    <div class="form-group">
+        <label for="address" class="form-label">Department</label>
+        <select class="form-control" asp-for="DepartmentId">
+            @foreach (var dept in Model.Departments)
+            {
+                @if (Model.DepartmentId == dept.Id)
+                {
+                    <option value="@dept.Id" selected>@dept.Name</option>
+                }
+                else
+                {
+                    <option value="@dept.Id">@dept.Name</option>
+                }
+            }
+        </select>
+        <span class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+<a asp-action="GetAll" class="btn btn-primary mt-4">Back To List</a>

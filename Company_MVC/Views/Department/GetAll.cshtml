@@ -1,0 +1,29 @@
+﻿@model List<Department>
+
+<h3 class="text-center mt-4 main-title position-relative">Departments</h3>
+
+<table class="table table-striped table-hover mt-5">
+    <thead>
+        <tr class="bg-primary text-white">
+            <th>Name</th>
+            <th>Manager</th>
+            <th>Extra Info</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var dept in Model)
+        {
+            <tr>
+                <td>@dept.Name</td>
+                <td>@dept.Manager.FirstName @dept.Manager.LastName</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@dept.Id" class="btn btn-primary">More Details</a> |
+                    <a asp-action="GetEditForm" asp-route-id="@dept.Id" class="btn btn-primary">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@dept.Id" class="btn btn-primary">Delete</a> 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Department/GetAddForm" class="btn btn-primary">New Department</a>

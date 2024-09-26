@@ -1,0 +1,36 @@
+﻿@model List<Employee>
+
+<h3 class="text-center mt-4 main-title position-relative">Employees</h3>
+
+<table class="table table-striped table-hover mt-5">
+    <thead>
+        <tr class="bg-primary text-white">
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Department</th>
+            <th>Extra Info</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var employee in Model)
+        {
+            <tr>
+                <td>@employee.FirstName</td>
+                <td>@employee.LastName</td>
+                <td>@employee.Gender</td>
+                <td>@employee.Address</td>
+                <th>@employee.WorkDepartment.Name</th>
+
+                <td>
+                    <a asp-action="Details" asp-route-id="@employee.Id" class="btn btn-primary">More Details</a> |
+                    <a asp-action="GetEditForm" asp-route-id="@employee.Id" class="btn btn-primary">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@employee.Id" class="btn btn-primary">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="GetAddForm" class="btn btn-primary">New Employee</a>
